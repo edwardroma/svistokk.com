@@ -11,18 +11,17 @@ class Router {
 
 		//action		
 		$action = (isset($url[0]) && $url[0] != '') ? 'the Action is: ' . $url[0] : 'indexAction';
-		$action_name = $action;
+		$action_name = $controller;
 		array_shift($url);
 
 		//params
-		$quryParams = $url;
+		$queryParams = $url;
 
 		$dispatch = new $controller($controller_name, $action);
 
 		if(method_exists($controller, $action)) {
-			call_user_func_array([$dispatch, $action], $quesryParams);
-		}
-		else {
+			call_user_func_array([$dispatch, $action], $queryParams);
+		} else {
 			die('This method does not exist in the controller \"' . $controller_name . '\"');
 		}
 	}

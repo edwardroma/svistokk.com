@@ -18,11 +18,11 @@ class Application {
 	}
 	private function _unregister_globals() {
 		if(ini_get('register_global')) {
-			$globalsAry = ('_SESSIONS', '_COOKIE', '_POST', '_GET', '_SET', '_REQUEST', '_SERVER', '_ENV', '_FILES');
+			$globalsAry = ['_SESSIONS', '_COOKIE', '_POST', '_GET', '_REQUEST', '_SERVER', '_ENV', '_FILES'];
 			foreach ($globalAry as $g) {
 				foreach ($GLOBALS($g) as $k => $v) {
 					if($GLOBALS[$k] === $v) {
-						unset(GLOBALS[$k]);
+						unset($GLOBALS[$k]);
 					}
 
 				}
